@@ -30,17 +30,12 @@ After creating these bubbles, you can input a second coordinate into the program
 
 <img src="git_data/terminal_output.png" width="500">
 
-#### Next Steps
-This project is almost done! (for now)
-Fixes to implement:
-- Fix long first walk bug.
-
 #### Problems Solved
 **Water:** The program initially assumed you could walk straight over water, since the travel bubbles spread from each reachable bus stop with a circle of radius: (walking speed * leftover time budget). To fix this, I combined data from government OpenData sites to create a .geojson file, a polygon of all land within Metro Vancouver. Performing an intersection with this file and the resulting file from my program deletes all of the travel bubble that is over water. However, there was still travel buubble over top of unreachable islands. To fix this without incorporating another graph layer of the street network, I used a spatial join to remove all polygons not containing a disembark point.
 
 **Routing:** The program initially drew straight lines between bus stops. This is usually fine, but for some express routes, the straight line between stops is obviously wrong. To fix this, I took advantage of the distance_traveled column of the stop data. For every individual transit trip, the program uses a splicing function to grab the points in "shapes.txt" with distance_traveled values between the board and disembark stops. This results in extremely accurate routing.
 
-**Graphical User Interface:** There have been many difficulties create a dashboard with Shiny for Python! This is my first time creating any front end or dashboard, so it's been a steep learning curve. In order to upload the dashboard to the internet, I used shinyapps.io. I also had to create an alternate version of the program with pre-run data analysis, since Shinyapps has a RAM limit I kept running into. One key issue I am yet to solve is implementing the routing functionality of the program to the dashboard. That is, allowing the user to click a second point in the map within the isochrone and have the app recognize this and draw the path to this location.
+**GUI:** There have been many difficulties create a dashboard with Shiny for Python! This is my first time creating any front end or dashboard, so it's been a steep learning curve. In order to upload the dashboard to the internet, I used shinyapps.io. I also had to create an alternate version of the program with pre-run data analysis, since Shinyapps has a RAM limit I kept running into. 
 
 ### Running this program.
 If you would like to run this dashboard locally:
